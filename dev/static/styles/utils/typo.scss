@@ -1,0 +1,137 @@
+.intro__title {
+    @include font-setting($primary-font, toRem(36), 1.1111, 700, $white);
+    @include fluidFontSize(3.6rem, 6rem, 36rem, 76.8rem, 3.6rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: toRem(70);
+        letter-spacing: toRem(-1);
+    }
+}
+
+.intro__description {
+    @include font-setting($primary-font, toRem(22), 1.3636, 700, $white);
+    @include fluidFontSize(2.2rem, 3rem, 36rem, 76.8rem, 2.2rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: 1.3333;
+    }
+}
+
+// Превью текст
+
+.section-text {
+    @include font-setting($primary-font, toRem(18), 1.3333, 400, $black);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: toRem(30);
+    }
+}
+
+// Content title h2
+
+.section-title {
+    @include font-setting($primary-font, toRem(32), 1.25, 700, $black);
+    @include fluidFontSize(3.2rem, 4rem, 36rem, 76.8rem, 3.2rem);
+    text-align: left;
+}
+
+// Link
+
+.section-link {
+    align-self: center;
+    @include flex-setting(column, center, center);
+    width: auto;
+    padding: toRem(12) toRem(34);
+    border: toRem(1) solid $darkgray;
+    text-decoration: none;
+    @include font-setting($primary-font, toRem(16), toRem(24), 400, $black);
+    transition: 0.2s $cubic;
+
+    &:active {
+        background-color: $pink;
+        color: $white;
+        border-color: $pink;
+        transition: 0.2s $cubic;
+    }
+
+    @include min-screen(1280px) {
+        &:hover {
+            background-color: $pink;
+            color: $white;
+            border-color: $pink;
+            transition: 0.2s $cubic;
+        }
+    }
+}
+
+.content__spans-item {
+    @include font-setting($primary-font, toRem(18), 1.3333, 400, $black);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+}
+
+// List item name
+
+.content__list-name {
+    @include font-setting($primary-font, toRem(18), 1.3333, 700, $black);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: toRem(30);
+    }
+}
+
+.content__list-description {
+    @include font-setting($primary-font, toRem(16), toRem(24), 400, $black);
+    text-align: left;
+}
+
+.subscribe__title {
+    @include font-setting($primary-font, toRem(18), 1.3333, 400, $white);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: toRem(30);
+    }
+}
+
+// facts nr
+
+.content__fact-nr {
+    @include font-setting($primary-font, toRem(30), 1.3333, 700, $black);
+    @include fluidFontSize(3rem, 6rem, 36rem, 76.8rem, 3rem);
+    text-align: left;
+
+    @include min-screen(768px) {
+        line-height: toRem(70);
+    }
+}
+
+.content__fact-text {
+    @include font-setting($primary-font, toRem(15), 1.5, 400, $black);
+    @include fluidFontSize(1.5rem, 1.6rem, 36rem, 76.8rem, 1.5rem);
+    text-align: left;
+}
+
+.content__reviews-title {
+    @include font-setting($primary-font, toRem(28), 1.42857, 700, $black);
+    @include fluidFontSize(2.8rem, 3rem, 36rem, 76.8rem, 2.8rem);
+    text-align: left;
+}
+
+.content__reviews-name {
+    @include font-setting($primary-font, toRem(18), 1.3333, 700, $black);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+    text-align: left;
+}
+
+.news__name {
+    @include font-setting($primary-font, toRem(18), 1.3333, 700, $black);
+    @include fluidFontSize(1.8rem, 2.2rem, 36rem, 76.8rem, 1.8rem);
+    text-align: left;
+}

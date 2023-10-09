@@ -1,0 +1,13 @@
+section.team
+    h2.team__title.section-title Команда
+    p.team__description.section-text Наша команда Simple Group — это объединение профессионалов, которые разделяют страсть к алкогольным напиткам и безупречному обслуживанию.
+
+    ul.team__list
+        for i in teamList
+            li.team__item
+                picture.team__frame
+                    source(srcset="static/images/content/" +i.image + ".webp 1x, static/images/content/" +i.image + "_2x.webp 2x" type="image/webp")
+                    img(src="static/images/content/" +i.image + "_2x.jpg" width="" height="" alt="" +i.name).team__frame-image
+                h3.team__name=i.name
+                b.team__position=i.position
+    a(href="team.html" target="_self").team__link.section-link О команде

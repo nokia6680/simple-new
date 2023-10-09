@@ -1,0 +1,75 @@
+- var navLinks = [{data: '', name: 'О нас', href: 'about.html', sublist: [{name: 'О компании', link: ''}, {name: 'Философия', link: ''}, {name: 'История', link: ''}, {name: 'Команда', link: ''}, {name: 'Структура', link: ''}, {name: 'Simple Art', link: ''}]}, {data: '', name: 'Услуги', href: 'services.html', sublist: [{name: 'Партнерам', link: ''}, {name: 'Частным клиентам', link: ''}, {name: 'Корпоративным клиентам', link: ''}, {name: 'Франшиза', link: ''}]}, {data: '', name: 'Ассортимент', href: 'assortment.html', sublist: [{name: 'Вино', link: ''}, {name: 'Крепкие напитки', link: ''}, {name: 'Безалкогольные напитки', link: ''}, {name: 'Стекло и аксессуары', link: ''}]}, {data: 'empty', name: '', link: '', sublist: [{name: 'Проекты', link: ''}, {name: 'Новости и мероприятия', link: ''}, {name: 'Партнеры', link: ''}, {name: 'Карьера', link: ''}, {name: 'Контакты', link: ''}, {name: 'Коммерческая политика', link: ''}, {name: 'Карта сайта', link: ''}]}, {data: 'single', name: 'Карьера', href: '#', sublist: ''}, {data: 'single', name: 'Контакты', href: '#', sublist: ''} ]
+- var cities = [{cityCode: 'spb', cityName: 'Санкт-Петербург'}, {cityCode: 'msk', cityName: 'Москва'}, {cityCode: 'ekb', cityName: 'Екатеринбург'}, {cityCode: 'krd', cityName: 'Краснодар'}, {cityCode: 'nsk', cityName: 'Новосибирск'}, {cityCode: 'rnd', cityName: 'Ростов-на-Дону'}, {cityCode: 'sch', cityName: 'Сочи'}, {cityCode: 'smr', cityName: 'Самара'}]
+- var socList = [{link: '', icon: 'yt'}, {link: '', icon: 'vk'}, {link: '', icon: 'tg'}, {link: '', icon: 'in'}, {link: '', icon: 'as'}, {link: '', icon: 'pm'}]
+- var navDocs = [{name: 'О качестве и безопасности товаров', link: ''}, {name: 'Политика конфиденциальности', link: ''}]
+
+header.header
+    //- menu toggler
+    button(type="button").header__toggle.js-toggle
+        span
+        span
+        span
+        span
+    //- logo
+    a(href="index.html" target="_self").header__link
+        picture.header__link-frame
+            source(media="(min-width: 768px)" srcset="static/images/content/simple-logo-lg.svg")
+            img(src="static/images/content/simple-logo.svg" width="64" height="28" alt="Simple Group").header__link-img
+    //- navigation (mob + desktop) + city + socials + phone + search + cta + lang
+    nav.header__nav.nav
+        //- navigation
+        ul.nav__list
+            each i in navLinks
+                li(data-type="" +i.data).nav__list-item
+                    if (i.href && i.name)
+                        a(href=i.href target="_self").nav__list-link=i.name
+                    //- inner list
+                    if i.sublist 
+                        ul.nav__list-inner
+                            each subitem in i.sublist
+                                li.nav__list-subitem
+                                    a(href="" +subitem.link target="_self").nav__list-sublink=subitem.name
+                                    svg
+                                        use(xlink:href="static/images/sprite/symbol/sprite.svg#link")
+        //- city select
+        .nav__controls
+            select.nav__select#citySelect
+                for i in cities
+                    option(value="" +i.cityCode)=i.cityName
+            //- phone
+            a(href="tel:74955105001" target="_blank").nav__tel +7 (495) 510-50-01
+            //- social list
+            ul.nav__social.social
+                for i in socList
+                    li.social__item
+                        a(href="" +i.link data-type="" +i.icon target="_blank").social__link
+                            svg
+                                use(xlink:href="static/images/sprite/symbol/sprite.svg#" +i.icon)
+            //- search toggler
+            button(type="button").nav__search.js-search-toggle
+                svg
+                    use(xlink:href="static/images/sprite/symbol/sprite.svg#loupe")
+            //- language toggle
+            a(href="" target="_self").nav__language
+                svg
+                    use(xlink:href="static/images/sprite/symbol/sprite.svg#en")
+            //- cta order
+            .nav__order
+                a(href="" target="_blank").nav__order-btn Заказать вино
+                ul.nav__order-list
+                    li.nav__order-item
+                        a(href="" target="_self").nav__order-link Частным клиентам
+                    li.nav__order-item
+                        a(href="" target="_self").nav__order-link Для бизнеса
+        //- Menu footer
+        .nav__footer
+            ul.nav__footer-docs
+                for i in navDocs
+                    li.nav__footer-item
+                        a(href="" +i.link target="_self").nav__footer-link=i.name
+            span.nav__footer-copy © 2023, Simple
+            a(href="https://www.pinkman.ru/").nav__footer-origin Сделано в Pinkman
+    //- Cabinet btn
+    button(type="button").header__cabinet
+        svg
+            use(xlink:href="static/images/sprite/symbol/sprite.svg#cabinet")

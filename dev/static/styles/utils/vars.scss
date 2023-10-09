@@ -1,0 +1,23 @@
+// Colors
+$white: #ffffff;
+$black: #000000;
+$dark: #1a1a1a;
+$green: #16251A;
+$brown: #797432;
+$pink: #E6007F ;
+$darkgray: #CECECE;
+$lightgray:#F5F5F5;
+$overlay: rgba(0, 0, 0, 0.36);
+$shadegray: #999999;
+// Text colors
+$graphite: #4D4D4D;
+$gray: #808080;
+// Sizes
+$base-font-size: 10;
+$lg-padding: calc((100% - 1160px) / 2);
+// Fonts
+$primary-font: 'HelveticaNeueCyr', sans-serif;
+
+$text-black: $black;
+$text-white: $white;
+$cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);

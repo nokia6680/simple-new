@@ -1,0 +1,9 @@
+@keyframes rotateR {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    100% {
+        transform: rotateZ(359deg);
+    }
+}

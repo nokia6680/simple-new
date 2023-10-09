@@ -1,0 +1,170 @@
+.news {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(40) 0;
+
+    &__title {
+        margin-left: 5.5556%;
+        margin-bottom: toRem(40);
+    }
+
+    &__list {
+        z-index: 2;
+        padding: 0 5.5556%;
+        scroll-snap-type: x mandatory;
+        width: 100%;
+
+        @include flex-setting(row, flex-start, flex-start);
+        gap: toRem(30);
+        margin-bottom: toRem(44);
+        overflow-x: auto;
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__item {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        min-width: toRem(275);
+        scroll-snap-align: center;
+    }
+
+    &__link {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        text-decoration: none;
+
+        &:active {
+            .news__name {
+                color: $pink;
+                transition: color 0.2s ease;
+            }
+        }
+    }
+
+    &__frame {
+        @include flex-setting(column, center, center);
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9.71;
+        margin-bottom: toRem(20);
+        overflow: hidden;
+
+        &-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__tag {
+        margin-bottom: toRem(6);
+        @include font-setting($primary-font, toRem(12), toRem(22), 700, $shadegray);
+        text-transform: uppercase;
+    }
+
+    &__name {
+        margin-bottom: toRem(24);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        transition: color 0.2s ease;
+    }
+
+    &__date {
+        position: relative;
+        @include font-setting($primary-font, toRem(16), toRem(24), 400, $shadegray);
+        padding-left: toRem(25);
+
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: toRem(16.5);
+            height: toRem(20);
+
+            background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.5975 3.4195H1.9025V14.8474H15.5975V3.4195ZM0.5 2.017V16.2499H17V2.017H0.5ZM5.2157 0.201172V2.017H3.8132V0.201997L5.2157 0.201172ZM13.7 0.201172V2.017H12.2975V0.201997L13.7 0.201172Z' fill='%23999999'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.9998 6.68253H0.625977V5.28003H16.9998V6.68253Z' fill='%23999999'/%3E%3C/svg%3E%0A");
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .news {
+        padding: toRem(40) 0;
+    
+        &__title {
+            margin-left: 5.2084%;
+        }
+    
+        &__list {
+            padding-left: 5.2084%;
+            padding-right: 5.2084%;
+            gap: toRem(40);
+            margin-bottom: toRem(50);
+            align-items: stretch;
+        }
+    
+        &__item {
+            min-width: toRem(560);
+            max-width: toRem(560);
+        }
+
+        &__link {
+            height: 100%;
+        }
+    
+        &__tag {
+            margin-bottom: toRem(8);
+        }
+    
+        &__name {
+            margin-bottom: toRem(20);
+        }
+    
+        &__date {
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .news {
+        padding-left: $lg-padding;
+        padding-right: $lg-padding;
+    
+        &__title {
+            margin-left: 0;
+        }
+    
+        &__list {
+            padding: 0;
+        }
+
+        &__link {
+            &:hover {
+                .news__name {
+                    color: $pink;
+                    transition: color 0.2s ease;
+                }
+            }
+        }
+
+        &__btn {
+            align-self: flex-start;
+        }
+    }
+}

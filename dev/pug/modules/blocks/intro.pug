@@ -1,0 +1,40 @@
+section(class="intro " +introType)
+    if breadList
+        ul.breadcrumbs
+            for i in breadList
+                li.breadcrumbs__item
+                    if i.href
+                        a.breadcrumbs__link(href="" +i.href)=i.text
+                    else
+                        span.breadcrumbs__text=i.text
+    h1.intro__title #{introName}
+
+    if introDescription
+        p.intro__description #{introDescription}
+    //- layer video
+    if introVideo
+        .intro__player 
+            video(src="static/videos/" +introVideo +".mp4" loop autoplay playsinline muted poster="static/images/content/" +introVideo +"_2x.webp").intro__player-video#myVideo
+            .intro__player-overlay
+    //- Layer and video
+    if (introBg && introVideo)
+        picture.intro__frame
+            source(media="(min-width: 768px)" srcset="static/images/content/" +introBg + ".webp 1x, static/images/content/" +introBg + "_2x.webp 2x" type="image/webp")
+            source(media="(min-width: 768px)" srcset="static/images/content/" +introBg + "_2x.jpg")
+            source(srcset="static/images/content/" +introBg + "-sm.webp 1x, static/images/content/" +introBg + "-sm_2x.webp 2x" type="image/webp")
+            img(src="static/images/content/" +introBg + "-sm_2x.jpg")
+    //- Layer bg
+    if (introBg && !introVideo)
+        picture.intro__frame
+            source(media="(min-width: 1280px)" srcset="static/images/content/" +introBg + "-lg.webp 1x, static/images/content/" +introBg + "-lg_2x.webp 2x" type="image/webp")
+            source(media="(min-width: 1280px)" srcset="static/images/content/" +introBg + "-lg_2x.jpg")
+            source(media="(min-width: 768px)" srcset="static/images/content/" +introBg + ".webp 1x, static/images/content/" +introBg + "_2x.webp 2x" type="image/webp")
+            source(media="(min-width: 768px)" srcset="static/images/content/" +introBg + "_2x.jpg")
+            source(srcset="static/images/content/" +introBg + "-sm.webp 1x, static/images/content/" +introBg + "-sm_2x.webp 2x" type="image/webp")
+            img(src="static/images/content/" +introBg + "-sm_2x.jpg")
+    //- For lower submenu
+    if introLinks
+        ul.intro__menu
+            for i in introLinks
+                li.intro__menu-item
+                    a(href="" +i.link target="_self" data-type="" +i.type).intro__menu-link=i.name

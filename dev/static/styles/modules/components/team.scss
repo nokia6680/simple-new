@@ -1,0 +1,102 @@
+.team {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+    padding: 0 5.5556%;
+    margin-bottom: toRem(80);
+
+    &__title {
+        margin-bottom: toRem(40);
+    }
+
+    &__description {
+        margin-bottom: toRem(40);
+    }
+
+    &__list {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+        gap: toRem(30);
+        margin-bottom: toRem(44);
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+    }
+
+    &__frame {
+        width: 100%;
+        height: auto;
+        @include flex-setting(column, flex-start, flex-start);
+        aspect-ratio: 16 / 9.7;
+        margin-bottom: toRem(20);
+
+        overflow: hidden;
+
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+
+    &__name {
+        margin-bottom: toRem(8);
+        @include font-setting($primary-font, toRem(22), toRem(30), 700, $black);
+        text-align: left;
+    }
+
+    &__position {
+        @include font-setting($primary-font, toRem(16), toRem(24), 400, $black);
+        text-align: left;
+    }
+}
+
+@include min-screen(768px) {
+    .team {
+        padding: 0 5.2084%;
+
+        &__description {
+            max-width: toRem(560);
+            margin-bottom: toRem(32);
+        }
+    
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: start;
+            align-items: start;
+            column-gap: toRem(30);
+            margin-bottom: toRem(50);
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .team {
+        position: relative;
+        padding-left: $lg-padding;
+        padding-right: $lg-padding;
+
+        &__title {
+            order: 1;
+        }
+
+        &__description {
+            order: 2;
+        }
+    
+        &__list {
+            order: 4;
+            column-gap: toRem(40);
+            margin-bottom: 0;
+        }
+
+        &__link {
+            order: 3;
+            align-self: flex-start;
+            margin-bottom: toRem(32);
+        }
+    }
+}

@@ -1,0 +1,718 @@
+.content {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+    margin-bottom: toRem(80);
+
+    &--index {
+        padding: toRem(40) 0;
+        margin-bottom: 0;
+    }
+
+    &--services {
+        gap: toRem(80);
+
+        .content__intro {
+            margin-bottom: 0;
+        }
+
+        .content__title {
+            order: 1;
+        }
+
+        .content__spans {
+            order: 2;
+        }
+
+        .content__link {
+            order: 3;
+        }
+
+        .content__list {
+            order: 4;
+        }
+    }
+
+    &--about {
+        .content__intro {
+            margin-bottom: toRem(80);
+        }
+
+        .content__title {
+            order: 1;
+        }
+
+        .content__spans {
+            order: 2;
+
+            &-item:first-of-type {
+                padding-left: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+
+        .content__player {
+            order: 4;
+
+            &-overlay {
+                background-image: url('../images/content/about-video_2x.webp');
+            }
+        }
+
+        .content__link {
+            order: 3;
+        }
+
+        .content__fact {
+            order: 5;
+        }
+    }
+
+    &--gc {
+        .content__details:first-child {
+            order: 1;
+        }
+
+        .content__data {
+            order: 2;
+        }
+
+        .content__player {
+            order: 3;
+            margin-bottom: toRem(80);
+        }
+
+        .content__details--second {
+            order: 4;
+        }
+
+        .content__slider {
+            order: 5;
+        }
+
+        .content__reviews {
+            order: 6;
+        }
+    }
+
+    &__intro {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        gap: toRem(16);
+        padding: 0 5.5556%;
+        margin-bottom: toRem(40);
+    }
+    // Preview text
+    &__details {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        margin-bottom: toRem(32);
+        gap: toRem(16);
+    }
+    // Large content block
+    &__wrap {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        padding: 0 5.5556%;
+
+        .content__data {
+            padding: 0;
+        }
+    }
+    // h2 title
+    &__title {
+        margin-bottom: toRem(40);
+    }
+    // texts list
+    &__spans {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        gap: toRem(12);
+        margin-bottom: toRem(44);
+
+        &-item {
+            position: relative;
+            padding-left: toRem(16);
+            
+
+            &::before {
+                position: absolute;
+                content: '';
+
+                width: toRem(8);
+                height: toRem(8);
+
+                background-color: $pink;
+                left: 0;
+                top: toRem(8);
+            }
+
+            a {
+                color: $pink;
+                text-decoration: none;
+            }
+        }
+    }
+
+    // Список
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: start;
+        align-self: center;
+        width: 100%;
+
+        row-gap: toRem(20);
+        padding: 0;
+
+        &-item {
+            position: relative;
+            z-index: 2;
+            @include flex-setting(column, center, center);
+            width: 100%;
+
+            &:active {
+                .content__list-frame {
+                    &::before {
+                        top: toRem(10);
+                        left: toRem(-10);
+                        transition: 0.2s $cubic;
+                    }
+                }
+            }
+        }
+
+        &-link {
+            width: 100%;
+            text-decoration: none;
+        }
+
+        &-frame {
+            position: relative;
+            @include flex-setting(column, center, center);
+            width: 100%;
+            aspect-ratio: 16 / 10.5;
+
+            img {
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 16 / 10.5;
+                object-fit: cover;
+            }
+
+            &::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                z-index: 0;
+                pointer-events: none;
+                width: 100%;
+                height: 100%;
+                background-color: $overlay;
+            }
+
+            &::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background-color: $pink;
+                transition: 0.2s $cubic;
+            }
+        }
+
+        &-name {
+            position: absolute;
+            z-index: 2;
+            left: toRem(20);
+            bottom: toRem(20);
+            color: $white;
+        }
+
+        &-description {
+            display: none;
+        }
+    }
+
+    &__link {
+        margin-bottom: toRem(48);
+    }
+
+    // Видео
+
+    &__player {
+        position: relative;
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        margin-bottom: toRem(40);
+
+        &-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+
+            top: 0;
+            left: 0;
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 4;
+
+            &.hidden {
+                display: none;
+            }
+        }
+
+        &-start {
+            position: absolute;
+            width: toRem(54);
+            height: toRem(54);
+            z-index: 5;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include flex-setting(column, center, center);
+            background-color: $lightgray;
+            border: none;
+            border-radius: 100vw;
+            transition: 0.2s $cubic;
+
+            svg {
+                fill: $pink;
+                width: toRem(22);
+                height: toRem(15);
+                object-fit: contain;
+                transition: 0.2s $cubic;
+            }
+
+            &:active {
+                background-color: $pink;
+                transition: 0.2s $cubic;
+
+                svg {
+                    fill: $lightgray;
+                    transition: 0.2s $cubic;
+                }
+            }
+
+            &.play {
+                display: none;
+            }
+        }
+
+        &-video {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        &-caption {
+            @include font-setting($primary-font, toRem(14), toRem(22), 400, rgba(0, 0, 0, 0.5));
+        }
+    }
+
+    // Факты
+
+    &__fact {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+
+        &-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: toRem(32);
+            column-gap: toRem(20);
+            align-self: start;
+            justify-content: center;
+            margin-bottom: toRem(44);
+        }
+
+        &-item {
+            @include flex-setting(column, flex-start, flex-start);
+            gap: toRem(5);
+        }
+
+        &-note {
+            @include font-setting($primary-font, toRem(14), toRem(24), 400, $black);
+            text-align: left;
+        }
+    }
+    // адреса ресторана
+    &__data {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        max-width: toRem(250);
+        margin-bottom: toRem(32);
+        padding: 0 5.5556%;
+
+        &-logo {
+            width: 100%;
+            max-width: toRem(200);
+            object-fit: contain;
+            margin-bottom: toRem(12)
+        }
+
+        &-text {
+            @include font-setting($primary-font, toRem(16), toRem(24), 400, $black);
+            margin-bottom: toRem(12);
+        }
+
+        &-link {
+            @include font-setting($primary-font, toRem(16), toRem(24), 700, $black);
+            text-decoration: none;
+            margin-bottom: toRem(24);
+        }
+
+        &-sign {
+            width: toRem(100);
+            height: toRem(100);
+            object-fit: contain;
+        }
+    }
+
+    // слайдер
+    &__slider {
+        position: relative;
+        width: 100%;
+        margin-bottom: toRem(60);
+        overflow: hidden;
+
+        &-item {
+            width: 100%;
+            @include flex-setting(column, center, center);
+
+            picture {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &-btn {
+            position: absolute;
+            z-index: 4;
+            top: 50%;
+            transform: translateY(-50%);
+            @include flex-setting(column, center, center);
+            width: toRem(36);
+            height: toRem(36);
+            background-color: transparent;
+            border-radius: 100vw;
+            border: toRem(1) solid $pink;
+
+            svg {
+                width: toRem(10);
+                height: toRem(10);
+                fill: none;
+                stroke-width: toRem(1);
+                stroke: $pink;
+            }
+        }
+
+        &-next {
+            right: toRem(12);
+        }
+
+        &-prev {
+            left: toRem(12);
+        }
+    }
+
+    &__reviews {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        gap: toRem(80);
+
+        &-item {
+            @include flex-setting(column, flex-start, flex-start);
+            width: 100%;
+        }
+
+        &-title {
+            margin-bottom: toRem(36);
+        }
+
+        &-text {
+            margin-bottom: toRem(20);
+        }
+    }
+}   
+
+@include min-screen(768px) {
+    .content {
+        &--index {
+            padding: toRem(80) 0;
+
+            .content__list--links {
+                .content__list-item:last-of-type {
+                    grid-column: 1 / 3;
+                    grid-row: 2 / 3;
+
+                    .content__list-frame {
+                        aspect-ratio: 2 / 1;
+                    }
+                }
+            }
+        }
+
+        &--services {
+            .content__link {
+                order: 4;
+                margin-bottom: 0;
+            }
+    
+            .content__list {
+                order: 3;
+                margin-bottom: toRem(50);
+            }
+        }
+
+        &--about {
+            .content__intro {
+                margin-bottom: toRem(80);
+            }
+    
+            .content__player {
+                order: 3;
+            }
+    
+            .content__link {
+                order: 5;
+                margin-bottom: 0;
+            }
+    
+            .content__fact {
+                order: 4;
+            }
+        }
+
+        &__intro {
+            padding: 0 5.2084%;
+
+            &-preview {
+                display: block;
+                max-width: toRem(560);
+            }
+        }
+
+        &__data {
+            padding: 0 5.2084%;
+        }
+
+        &__title {
+            max-width: toRem(560);
+        }
+
+        &__details {
+            max-width: toRem(560);
+        }
+
+        &__wrap {
+            padding: 0 5.2084%;
+        }
+
+        &__spans {
+            max-width: toRem(560);
+            gap: toRem(16);
+            margin-bottom: toRem(32);
+        }
+    
+        // Список
+    
+        &__list {
+            grid-template-columns: 1fr 1fr;
+            column-gap: toRem(30);
+            row-gap: toRem(30);
+
+            &-item {
+                &:hover {
+                    .content__list-frame {
+                        &::before {
+                            top: toRem(10);
+                            left: toRem(-10);
+                            transition: 0.2s $cubic;
+                        }
+                    }
+
+                    .content__list-name {
+                        color: $pink;
+                        transition: 0.2s $cubic;
+                    }
+
+                    .content__list-description {
+                        color: $pink;
+                        transition: 0.2s $cubic;
+                    }
+                }
+            }
+    
+            &-frame {
+                margin-bottom: toRem(20);
+                aspect-ratio: 4 / 3.2;
+
+                img {
+                    aspect-ratio: 4 / 3.2;
+                }
+    
+                &::after {
+                    display: none;
+                }
+            }
+    
+            &-name {
+                position: relative;
+                z-index: 2;
+                left: auto;
+                bottom: auto;
+                margin-bottom: toRem(8);
+                color: $black;
+                transition: 0.2s $cubic;
+            }
+    
+            &-description {
+                display: block;
+                transition: 0.2s $cubic;
+            }
+        }
+
+        // Facts
+
+        &__fact {
+
+            &-list {
+                row-gap: toRem(40);
+                margin-bottom: toRem(60);
+            }
+
+            &-item {
+                gap: toRem(16);
+            }
+        }
+
+        &__player {
+            &-caption {
+                margin-top: toRem(16);
+            }
+        }
+
+        &__reviews {
+            max-width: toRem(560);
+    
+            &-text {
+                margin-bottom: toRem(24);
+            }
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .content {
+        &--index {
+            .content__list--links {
+                .content__list-item:last-of-type {
+                    .content__list-frame {
+                        aspect-ratio: 16 / 6.18;
+                    }
+                }
+            }
+        }
+        &--services {
+            .content__wrap {
+                position: relative;
+            }
+
+            .content__link {
+                order: 2;
+                align-self: flex-start;
+                margin-bottom: toRem(32);
+            }
+    
+            .content__list {
+                margin-bottom: 0;
+            }
+        }
+
+        &--about {
+            .content__wrap {
+                position: relative;
+            }
+    
+            .content__link {
+                order: 2;
+                align-self: flex-start;
+                margin-bottom: toRem(32);
+            }
+        }
+
+        &__intro {
+            padding: 0 $lg-padding;
+        }
+
+        &__wrap {
+            padding: 0 $lg-padding;
+        }
+    
+        // Список
+    
+        &__list {
+            column-gap: toRem(40);
+            row-gap: toRem(40);
+    
+            &-item {
+                &:hover {
+                    .content__list-frame {
+                        &::before {
+                            top: toRem(12);
+                            left: toRem(-12);
+                        }
+                    }
+                }
+            }
+
+            // &--links {
+            //     .content__list-item:last-of-type {
+            //         .content__list-frame {
+            //             aspect-ratio: 16 / 6.18;
+            //         }
+            //     }
+            // }
+        }
+
+        &__fact-list {
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: toRem(40);
+        }
+
+        &__slider {
+            &-prev {
+                left: toRem(40);
+            }
+
+            &-next {
+                right: toRem(40);
+            }
+        }
+
+        &__data {
+            position: absolute;
+            right: $lg-padding;
+            top: 0;
+            padding: 0;
+        }
+    }
+}

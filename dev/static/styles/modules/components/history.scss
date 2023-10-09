@@ -1,0 +1,94 @@
+.history {
+    @include flex-setting(column, flex-start, flex-start);
+    width: 100%;
+    padding: 0 5.5556%;
+    margin-bottom: toRem(80);
+
+    &__title {
+        margin-bottom: toRem(40);
+    }
+
+    &__description {
+        margin-bottom: toRem(44);
+    }
+
+    &__link {
+        margin-bottom: toRem(40);
+    }
+
+    &__visual {
+        @include flex-setting(column, flex-start, flex-start);
+        width: 100%;
+        gap: toRem(12);
+    }
+
+    &__frame {
+        @include flex-setting(column, center, center);
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 8.3;
+        overflow: hidden;
+
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+
+    &__caption {
+        @include font-setting($primary-font, toRem(14), toRem(22), 400, rgba(0, 0, 0, 0.5));
+    }
+}
+
+@include min-screen(768px) {
+    .history {
+        padding: 0 5.2084%;
+        &__title {
+            order: 1;
+        }
+        &__description {
+            order: 2;
+            max-width: toRem(560);
+            margin-bottom: toRem(32);
+        }
+    
+        &__link {
+            order: 4;
+            margin-bottom: 0;
+        }
+    
+        &__visual {
+            order: 3;
+            gap: toRem(16);
+            margin-bottom: toRem(50);
+        }
+    
+        &__frame {
+            aspect-ratio: 16 / 6.17;
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .history {
+        position: relative;
+        padding-left: $lg-padding;
+        padding-right: $lg-padding;
+    
+        &__link {
+            order: 3;
+            align-self: flex-start;
+            margin-bottom: toRem(32);
+        }
+    
+        &__visual {
+            margin-bottom: 0;
+        }
+    
+        &__frame {
+            aspect-ratio: 4 / 2.07;
+        }
+    }
+}

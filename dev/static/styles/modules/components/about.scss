@@ -1,0 +1,136 @@
+.about {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(40) 5.5556%;
+
+    &__details {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        margin-bottom: toRem(48);
+    }
+
+    &__title {
+        margin-bottom: toRem(40);
+    }
+
+    &__description:not(:last-of-type) {
+        margin-bottom: toRem(16);
+    }
+
+    &__description:last-of-type {
+        margin-bottom: toRem(48);
+    }
+
+    &__list {
+        display: grid;
+        width: 100%;
+        max-width: toRem(525);
+        grid-template-columns: 43.125% 53.75%;
+        column-gap: 3.125%;
+        justify-content: center;
+        align-self: center;
+
+        &-item {
+            width: 100%;
+            @include flex-setting(column, center, center);
+            position: relative;
+            gap: toRem(12);
+
+            &:first-of-type {
+                align-items: flex-end;
+                padding-bottom: toRem(48);
+
+                picture:first-of-type {
+                    width: 81.1594%;
+                }
+            }
+
+            &:last-of-type {
+                padding-top: toRem(40);
+                align-items: flex-start;
+
+                picture:last-of-type {
+                    width: 55.617%;
+                }
+            }
+
+            picture {
+                @include flex-setting(column, center, center);
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .about {
+        position: relative;
+        padding-left: 5.2084%;
+        padding-right: 5.2084%;
+        padding-bottom: toRem(140);
+    
+        &__details {
+            margin-bottom: toRem(32);
+        }
+
+        &__description:not(:last-of-type) {
+            margin-bottom: toRem(20);
+        }
+    
+        &__description:last-of-type {
+            margin-bottom: 0;
+        }
+    
+        &__list {
+            max-width: toRem(525);
+
+            &-item {
+                gap: toRem(20);
+    
+                &:first-of-type {
+                    padding-bottom: toRem(75);
+                }
+    
+                &:last-of-type {
+                    padding-top: toRem(64);
+                }
+            }
+        }
+
+        &__link {
+            position: absolute;
+            bottom: toRem(40);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .about {
+        padding-left: $lg-padding;
+        padding-right: $lg-padding;
+        padding-bottom: toRem(40);
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: toRem(75);
+    
+        &__details {
+            margin-bottom: 0;
+            align-items: flex-start;
+        }
+    
+        &__description:last-of-type {
+            margin-bottom: toRem(50);
+        }
+
+        &__link {
+            align-self: flex-start;
+            position: static;
+            bottom: auto;
+            left: auto;
+            transform: unset;
+        }
+    }
+}

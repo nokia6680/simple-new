@@ -1,0 +1,129 @@
+section(class="content " +pageType)
+    //- intro preview text
+    if textSpans
+        .content__intro
+            each span in textSpans
+                span.content__intro-preview.section-text=span
+        //- for restaurant data
+    if restaurant
+        .content__data
+            if restaurant.image
+                img(src="static/images/content/" +restaurant.image + ".svg" width="" height="" alt="").content__data-logo
+
+    //- just grid type
+    .content__wrap
+        //- If has h2
+        if wrapTitle_1
+            h2.content__title.section-title #{wrapTitle_1}
+
+        //- If has descriptions list
+        if wrapSpans
+            .content__details
+                each span in wrapSpans
+                    span.content__details-preview.section-text=span
+
+        //- if text list before grid list
+        if wrapList
+            ul.content__spans
+                each i in wrapList_1
+                    li.content__spans-item!=i
+
+        //- if images grid list
+        if grid
+            ul(class="content__list " +gridType)
+                for i in gridItems_1
+                    li.content__list-item
+                        a(href="" +i.link target="_self").content__list-link
+                            +picture('content__list-frame', '' +i.image, '320', '210', '' +i.name)
+                            h3.content__list-name=i.name
+
+                            if i.theme
+                                span.content__list-description=i.theme
+
+        //- link_1
+        if link
+            a(href="" target="_self").content__link.section-link=link_1
+            
+        //- If videoblock
+        if wrapVideo
+            .content__player
+                .content__player-overlay
+                button(type="button").content__player-start
+                    svg
+                        use(xlink:href="static/images/sprite/symbol/sprite.svg#yt")
+                iframe(id="vimeo-player" src="https://player.vimeo.com/video/" +wrapVideo +"&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen).content__player-video
+                //- video(poster="static/images/content/" +wrapVideo +"_2x.webp" src="static/video/" +wrapVideo + ".mp4" autoplay muted playsinline loop).content__player-video
+                if wrapVideoCaption
+                    span.content__player-caption=wrapVideoCaption
+        //- if facts block
+        if wrapFacts
+            .content__fact
+                ul.content__fact-list
+                    for i in factsItem
+                        li.content__fact-item
+                            b.content__fact-nr=i.nr
+                            span.content__fact-text=i.text
+                if factsNote
+                    span.content__fact-note=factsNote
+
+        //- for restaurant data
+        if restaurant
+            .content__data
+                if restaurant.image && restaurant.address && restaurant.link
+                    img(src="static/images/content/" +restaurant.image + ".svg" width="" height="" alt="").content__data-logo
+                    span.content__data-text=restaurant.address
+                    a(href="" +restaurant.link target="_blank").content__data-link На сайт ресторана
+                    img(src="static/images/content/michelin.png" width="100" height="99" alt="Michelin 2022").content__data-sign
+        
+        //- Simple texts inside
+        if wrapText
+            .content__details.content__details--second
+                each i in wrapText_1
+                    span.content__details-preview.section-text!=i
+        
+        //- Image slider
+        if slider
+            div(class="content__slider swiper-" +slider)
+                .swiper-wrapper
+                    for i in sliderSlides
+                        .content__slider-item.swiper-slide
+                            +picture('', i.image, '', '', i.name)
+                button(type="button" class="content__slider-btn content__slider-prev " +slider +"-prev")
+                    svg
+                        use(xlink:href="static/images/sprite/symbol/sprite.svg#arr-left")
+                button(type="button" class="content__slider-btn content__slider-next " +slider +"-next")
+                    svg
+                        use(xlink:href="static/images/sprite/symbol/sprite.svg#arr-right")
+        
+        //- Reviews of restaurants
+        if reviews 
+            ul.content__reviews
+                for i in reviews
+                    li.content__reviews-item
+                        h3.content__reviews-title=i.title
+                        p.content__reviews-text.section-text=i.text
+                        b.content__reviews-name=i.name
+    //- for page b2b and b2c
+    if wrapNr
+        .content__wrap
+            //- If has h2
+            if wrapTitle_2
+                h2.content__title.section-title #{wrapTitle_2}
+            //- if text list before grid list
+            if wrapList
+                ul.content__spans
+                    each i in wrapList_2
+                        li.content__spans-item!=i
+            //- if images grid list
+            if grid
+                ul(class="content__list " +gridType)
+                    for i in gridItems_2
+                        li.content__list-item
+                            a(href="" +i.link target="_self").content__list-link
+                                +picture('content__list-frame', '' +i.image, '320', '210', '' +i.name)
+                                h3.content__list-name=i.name
+
+                                if i.theme
+                                    span.content__list-description=i.theme
+            if link
+                a(href="" target="_self").content__link.section-link=link_2

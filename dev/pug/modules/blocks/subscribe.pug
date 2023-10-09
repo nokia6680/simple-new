@@ -1,0 +1,17 @@
+section.subscribe
+    h2.subscribe__title Будьте в курсе последних новостей
+    form(method="post" action="").subscribe__form
+        .subscribe__content
+            input(type="email" name="sub-email" id="sub-email" placeholder="Ваш e-mail" required).subscribe__input
+            span.subscribe__error Поле обязательно должно быть заполнено
+            .subscribe__list
+                select.subscribe__select#subscribeSelect
+                    option(value="hide") Все
+                    option(value="SW") SimpleWine
+                    option(value="SWN") Simple Wine News
+        .subscribe__agree
+            input(type="checkbox" name="policy-agree" id="policy-agree-main" required).subscribe__agree-box
+            label(for="policy-agree-main").subscribe__agree-label Я согласен с 
+                a(href="" target="_blank") политикой
+                    |  обработки персональных данных
+        button(type="submit").subscribe__submit Подписаться

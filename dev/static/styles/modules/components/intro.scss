@@ -1,0 +1,239 @@
+.intro {
+    position: relative;
+    @include flex-setting(column, flex-start, flex-start);
+    width: 100%;
+    height: toRem(260);
+
+    padding: toRem(20) 5.5556%;
+    margin-bottom: toRem(40);
+
+    &--menu {
+        padding: toRem(20) 0 0 0;
+        height: toRem(320);
+        margin-bottom: toRem(80);
+
+        .intro__title {
+            padding-left: 5.5556%;
+        }
+    }
+
+    &--index {
+        padding: toRem(150) 0 0 0;
+        height: toRem(480);
+        margin-bottom: 0;
+
+        .intro__title {
+            padding: 0 5.5556%;
+            margin-bottom: toRem(40);
+        }
+
+        .intro__frame {
+            max-height: toRem(480);
+        }
+
+        .intro__player {
+            display: none;
+        }
+    }
+
+    &--gc {
+        .intro__title {
+            margin-bottom: toRem(8);
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        z-index: 0;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: $overlay;
+    }
+
+    &__title {
+        z-index: 2;
+        text-align: left;
+    }
+
+    &__description {
+        z-index: 2;
+        padding: 0 5.5556%;
+    }
+
+    &__frame {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: -1;
+        transform: translateX(-50%);
+        @include flex-setting(column, center, center);
+        width: 100%;
+        height: 100%;
+        max-height: toRem(260);
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+    }
+
+    &__menu {
+        margin-bottom: 0;
+        margin-top: auto;
+        padding: 0 5.5556%;
+        @include flex-setting(row, flex-start, center);
+        width: 100%;
+        height: toRem(60);
+        gap: toRem(18);
+        background-color: $black;
+        z-index: 3;
+
+        &-item {
+            width: auto;
+            @include flex-setting(column, center, center);
+        }
+
+        &-link {
+            @include font-setting($primary-font, toRem(15), toRem(24), 400, $white);
+            text-decoration: none;
+
+            &[data-type="active"] {
+                color: $pink;
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .intro {
+        padding: toRem(30) 5.2084%;
+
+        &--menu {
+            padding: toRem(30) 0 0 0;
+            height: toRem(340);
+    
+            .intro__title {
+                padding-left: 5.2084%;
+            }
+        }
+
+        &--index {
+            padding: toRem(150) 0 0 0;
+            height: toRem(700);
+    
+            .intro__title {
+                padding: 0 5.2084%;
+                margin-bottom: toRem(24);
+            }
+    
+            .intro__frame {
+                max-height: toRem(700);
+            }
+        }
+
+        &--gc {
+            .intro__title {
+                margin-bottom: toRem(12);
+            }
+        }
+
+        &__menu {
+            padding: 0 5.2084%;
+            height: toRem(80);
+            gap: toRem(32);
+    
+            &-link {
+                font-size: toRem(16);
+            }
+        }
+    }
+}
+
+@include min-screen(1280px) {
+    .intro {
+        height: toRem(380);
+        padding: toRem(60) $lg-padding;
+
+        &--menu {
+            height: toRem(460);
+            padding: toRem(60) 0 0 0;
+            
+            .intro__title {
+                padding-left: $lg-padding;
+            }
+        }
+
+        &--index {
+            padding: toRem(120) $lg-padding 0 $lg-padding;
+            height: toRem(520);
+            overflow: hidden;
+    
+            .intro__title {
+                padding: 0;
+            }
+    
+            .intro__frame {
+                opacity: 0;
+                transition: opacity 0.2s $cubic;
+            }
+
+            .intro__player {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                @include flex-setting(column, center, center);
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 6.5;
+
+                overflow: hidden;
+
+                &-video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &--gc {
+            .intro__title {
+                margin-bottom: toRem(12);
+            }
+
+            .intro__description {
+                padding-left: $lg-padding;
+                padding-right: 0;
+                color: $darkgray;
+            }
+        }
+
+        &__description {
+            max-width: toRem(560);
+            padding: 0;
+        }
+
+        &__frame {
+            max-height: toRem(380);
+        }
+
+        &__menu {
+            padding: 0 $lg-padding;
+    
+            &-link {
+                font-size: toRem(14);
+                line-height: toRem(22);
+            }
+        }
+    }
+}
